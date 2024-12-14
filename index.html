@@ -1,5 +1,5 @@
 <!doctype html>
-<head>
+<head lang="en">
 	<meta charset="utf-8">
 	<!-- Google Analytics -->
 	<script>
@@ -8,16 +8,32 @@
 		ga('send', 'pageview');
 	</script>
 	<!-- End Google Analytics -->
-	<script src='https://www.google-analytics.com/analytics.js'></script>
-	<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+	<script defer src='https://www.google-analytics.com/analytics.js'></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css?family=Dokdo&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="styles.css" />
-	<link rel="stylesheet" href="jquery-ui.css" />
 	<title>Website with perf issues</title>
 </head>
 
 <body>
-	<iframe width="560" height="315" src="https://www.youtube.com/embed/4QkuvwRftTw" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
-	<div class="images">
+	<div id="video-container" style="position: relative; width:560px; height:315px;">
+		<!-- Placeholder image -->
+		<img 
+		  src="https://img.youtube.com/vi/4QkuvwRftTw/hqdefault.jpg" 
+		  alt="Video Thumbnail" 
+		  width="560" 
+		  height="315" 
+		  style="cursor: pointer;"
+		  onclick="loadVideo()" 
+		/>
+		<!-- Optional: a play button overlay -->
+		<div 
+		  style="position:absolute; top:50%; left:50%; transform: translate(-50%,-50%); 
+				 font-size: 50px; color: white; text-shadow: 0 0 10px black; cursor: pointer;">
+		  ▶
+		</div>
+	  </div>
+		  <div class="images">
 		<img src="https://via.assets.so/furniture.png?q=95&w=400&h=300&fit=fill&id=1" />
 		<img src="https://via.assets.so/furniture.png?q=95&w=400&h=300&fit=fill&id=2" />
 		<img src="https://via.assets.so/furniture.png?q=95&w=400&h=300&fit=fill&id=3" />
@@ -49,4 +65,22 @@
 		</div>
 	</div>
 </body>
+
+<script>
+	function loadVideo() {
+	  // Create a new iframe element
+	  var iframe = document.createElement('iframe');
+	  iframe.setAttribute('width', '560');
+	  iframe.setAttribute('height', '315');
+	  iframe.setAttribute('src', 'https://www.youtube.com/embed/4QkuvwRftTw?autoplay=1');
+	  iframe.setAttribute('frameborder', '0');
+	  iframe.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture');
+	  iframe.setAttribute('allowfullscreen', '');
+	
+	  // Replace the contents of the container with the iframe
+	  var container = document.getElementById('video-container');
+	  container.innerHTML = '';
+	  container.appendChild(iframe);
+	}
+	</script>	
 </html>
